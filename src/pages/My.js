@@ -25,7 +25,7 @@ function My(){
         return ()=>{
             console.log('====================')
         }
-    },[])
+    },[count])
     return (
         <div>
             <p>You clicked {count} times</p>
