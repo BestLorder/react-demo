@@ -13,7 +13,7 @@ const router = [
     title: '博客首页',
     exact: true,
     component: Loadable({
-      loader: () => import('../pages/Index'),
+      loader: () => import('@/pages/Index'),
       loading: Loading,
       delay: 300000000,
       timeout: 10000
@@ -26,7 +26,6 @@ const router = [
     component: Loadable({
       loader: () => import('../pages/List'),
       loading: Loading,
-      delay: 300000
     })
   },
   {
@@ -36,7 +35,6 @@ const router = [
     component: Loadable({
       loader: () => import('../pages/My'),
       loading: Loading,
-      delay: 300000
     })
   }
 ];
