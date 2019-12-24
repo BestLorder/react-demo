@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect } from 'react';
 const Test = () => {
-  const [a] = useState('123456789');
+  const [a] = useState('1');
   useEffect(() => {
       console.log('start')
       return () => {
