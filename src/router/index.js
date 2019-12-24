@@ -1,8 +1,5 @@
 import React from 'react'
 import Loadable from 'react-loadable';
-// import Index from '../pages/Index';
-// import List from '../pages/List';
-// import My from '../pages/My';
 const Loading = () => {
   return <div>Loading...</div>;
 };
@@ -22,7 +19,7 @@ const router = [
   {
     path: '/list/:id',
     title: '视频教程',
-    exact: false,
+    exact: true,
     component: Loadable({
       loader: () => import('../pages/List'),
       loading: Loading,
@@ -31,9 +28,18 @@ const router = [
   {
     path: '/my/',
     title: '职场技能',
-    exact: false,
+    exact: true,
     component: Loadable({
       loader: () => import('../pages/My'),
+      loading: Loading,
+    })
+  },
+  {
+    path: '/test/',
+    title: 'test',
+    exact: true,
+    component: Loadable({
+      loader: () => import('../pages/Test'),
       loading: Loading,
     })
   }
