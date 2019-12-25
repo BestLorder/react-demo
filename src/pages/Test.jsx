@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 const Test = () => {
   const [a] = useState('1234');
+  // a
   useEffect(() => {
       console.log('start')
       return () => {
