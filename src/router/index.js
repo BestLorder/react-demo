@@ -1,3 +1,10 @@
+/*
+ * @Descripttion: 
+ * @Author: Lorder
+ * @Date: 2019-12-04 16:41:26
+ * @LastEditors: Lorder
+ * @LastEditTime: 2019-12-27 16:09:44
+ */
 import React from 'react'
 import Loadable from 'react-loadable';
 const Loading = () => {
@@ -17,7 +24,7 @@ const router = [
     })
   },
   {
-    path: '/list/:id',
+    path: '/list',
     title: '视频教程',
     exact: true,
     component: Loadable({

@@ -7,6 +7,8 @@
     "@svgr/webpack": "4.1.0",
     "@typescript-eslint/eslint-plugin": "1.6.0",
     "@typescript-eslint/parser": "1.6.0",
+    "antd-mobile": "^2.3.1",
+    "axios": "^0.19.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "8.0.5",
@@ -34,6 +36,8 @@
     "jest-environment-jsdom-fourteen": "0.1.0",
     "jest-resolve": "24.7.1",
     "jest-watch-typeahead": "0.3.0",
+    "js-base64": "^2.5.1",
+    "js-md5": "^0.7.3",
     "mini-css-extract-plugin": "0.5.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.2.1",
@@ -48,6 +52,7 @@
     "react-dom": "^16.8.6",
     "react-loadable": "^5.5.0",
     "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
     "semver": "6.0.0",
@@ -82,6 +87,7 @@
     ]
   },
   "devDependencies": {
+    "babel-plugin-import": "^1.13.0",
     "prettier": "^1.19.1"
   },
   "jest": {
@@ -127,11 +133,6 @@
     "watchPlugins": [
       "jest-watch-typeahead/filename",
       "jest-watch-typeahead/testname"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "react-app"
     ]
   }
 }
