@@ -3,7 +3,7 @@
  * @Author: Lorder
  * @Date: 2019-12-04 16:41:26
  * @LastEditors: Lorder
- * @LastEditTime: 2019-12-27 16:09:44
+ * @LastEditTime: 2020-04-01 14:14:30
  */
 import React from 'react'
 import Loadable from 'react-loadable';
@@ -17,7 +17,7 @@ const router = [
     title: '博客首页',
     exact: true,
     component: Loadable({
-      loader: () => import('@/pages/Index'),
+      loader: () => import('@/pages/List'),
       loading: Loading,
       delay: 300000000,
       timeout: 10000

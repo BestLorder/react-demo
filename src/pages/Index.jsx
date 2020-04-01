@@ -3,14 +3,20 @@
  * @Author: Lorder
  * @Date: 2019-12-04 16:23:48
  * @LastEditors: Lorder
- * @LastEditTime: 2020-03-31 16:49:54
+ * @LastEditTime: 2020-04-01 14:13:22
  */
 import React, { Component, Fragment } from 'react';
 import MyButton from '@/components/Button';
 import { Button, List } from 'antd-mobile';
 import * as Home from '@/services/index';
 import store from '@/store';
-import { CHANGE_INPUT , ADD_ITEM , DELETE_ITEM } from '@/store/actionTypes'
+// import { ADD_ITEM , DELETE_ITEM } from '@/store/actionTypes'
+import {
+  changeInputAction,
+  addItemAction,
+  deleteItemAction
+} from '@/store/actionCreators';
+import { connect } from 'react-redux'; //引入连接器
 const Item = List.Item;
 
 class Index extends Component {
@@ -27,7 +33,7 @@ class Index extends Component {
       name: 4,
       ...store.getState()
     };
-    console.log(store.getState());
+    // console.log(store.getState());
     this.storeChange = this.storeChange.bind(this); //转变this指向
     store.subscribe(this.storeChange); //订阅Redux的状态
   }
@@ -77,24 +83,27 @@ class Index extends Component {
     // this.setState({ newList: [...this.state.newList, this.state.name] }, () => {
     //   // console.log(this.state.newList);
     // });
-    const action = {
-      type: CHANGE_INPUT,
-      value: '我来也'
-    };
+    // const action = {
+    //   type: CHANGE_INPUT,
+    //   value: '我来也'
+    // };
+    const action = changeInputAction('我来也');
     store.dispatch(action);
   };
 
   clickBtn = () => {
-    console.log('clickBtn');
-    const action = { type: ADD_ITEM };
+    // console.log('clickBtn');
+    // const action = { type: ADD_ITEM };
+    const action = addItemAction();
     store.dispatch(action);
   };
 
   deleteItem(index) {
-    const action = {
-      type: DELETE_ITEM,
-      index
-    };
+    // const action = {
+    //   type: DELETE_ITEM,
+    //   index
+    // };
+    const action = deleteItemAction(index);
     store.dispatch(action);
   }
 
@@ -129,7 +138,16 @@ class Index extends Component {
         <MyButton text={this.state.text} onChange={this.changeName}></MyButton>
         <List renderHeader={() => 'Basic Style'} className="my-list">
           {this.state.list.map((item, index) => {
-            return <Item key={index + item} onClick={()=>{this.deleteItem(index)}}>{item}</Item>;
+            return (
+              <Item
+                key={index + item}
+                onClick={() => {
+                  this.deleteItem(index);
+                }}
+              >
+                {item}
+              </Item>
+            );
           })}
         </List>
       </Fragment>
@@ -137,4 +155,8 @@ class Index extends Component {
   }
 }
 
-export default Index;
+export default connect(state => {
+  return {
+    inputValue: state.inputValue
+  };
+}, null)(Index);
