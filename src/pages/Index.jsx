@@ -3,7 +3,7 @@
  * @Author: Lorder
  * @Date: 2019-12-04 16:23:48
  * @LastEditors: Lorder
- * @LastEditTime: 2020-06-17 16:46:02
+ * @LastEditTime: 2020-06-18 13:23:07
  */
 import React, { Component } from 'react';
 // import MyButton from '@/components/Button';
@@ -202,6 +202,7 @@ class Index extends Component {
         </div>
         <video src="https://hy.v.netease.com/2018/1030/5c9caed3eea6c6e079673d031fca3350qt.mp4" controls="controls"  webkit-playsinline="true" x5-video-player-type="h5"></video>
         <div className='red'></div>
+        <div>6666</div>
       </>
     );
   }
