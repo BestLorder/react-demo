@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { getUrlParam } from '@/utils/util';
 import { connect } from 'react-redux'; //引入连接器
-import { Button,List } from 'antd-mobile';
+// import { Button,List } from 'antd-mobile';
+// import MyButton from '@/components/Button';
 import {
   changeInputAction,
   addItemAction
 } from '@/store/actionCreators';
-const Item = List.Item;
+import './list.css'
+import '@/assets/js/fastclick';
+import '@/assets/js/a';
+import wechatConfig from '@/config/wechatConfig'
+let MyButton = null
+import(/* webpackChunkName: "MyButton" */'@/components/Button').then(comp => {
+  MyButton = comp
+})
+// const Item = List.Item;
 const query = getUrlParam();
 
 class Index extends Component {
@@ -18,24 +27,20 @@ class Index extends Component {
   componentDidMount() {
     console.log(query);
     console.log(this.props);
+    console.log(wechatConfig)
     // let tempId = this.props.match.params.id;
     // this.setState({ id: tempId });
     // this.props.history.push("/my/");
   }
-  jump() {
-    // this.setState({ a: 2 });
-    // console.log(this.state.a);
-    //   setTimeout(()=>{
-    //     console.log(this.state.a)
-    //   },0)
-    // this.props.history.push("/my/");
-  }
+  jumpMy = () => {
+    this.props.history.push('/my');
+  };
 
   render() {
     return (
       <>
         <h2 onClick={()=>{this.props.changeInputAction('1111')}}>{this.props.inputValue}</h2>
-        <Button type="primary" onClick={this.props.addItemAction}>
+        {/* <Button type="primary" onClick={this.props.addItemAction}>
           增加
         </Button>
         <List renderHeader={() => 'Basic Style'} className="my-list">
@@ -48,7 +53,12 @@ class Index extends Component {
               </Item>
             );
           })}
-        </List>
+        </List> */}
+        <div onClick={this.jumpMy}>跳转</div>
+        <div className='scroll'>
+          啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+        </div>
+        {MyButton&&<MyButton text='123' ></MyButton>}
       </>
     );
   }

@@ -3,13 +3,18 @@
  * @Author: Lorder
  * @Date: 2019-12-04 16:23:48
  * @LastEditors: Lorder
- * @LastEditTime: 2020-04-01 14:13:22
+ * @LastEditTime: 2020-06-17 16:46:02
  */
-import React, { Component, Fragment } from 'react';
-import MyButton from '@/components/Button';
+import React, { Component } from 'react';
+// import MyButton from '@/components/Button';
+
 import { Button, List } from 'antd-mobile';
 import * as Home from '@/services/index';
+import './index.less'
 import store from '@/store';
+import wechatConfig from '@/config/wechatConfig'
+import '@/assets/js/a';
+import '@/assets/js/fastclick';
 // import { ADD_ITEM , DELETE_ITEM } from '@/store/actionTypes'
 import {
   changeInputAction,
@@ -17,7 +22,15 @@ import {
   deleteItemAction
 } from '@/store/actionCreators';
 import { connect } from 'react-redux'; //引入连接器
+let MyButton = null
+import(/* webpackChunkName: "MyButton" */'@/components/Button').then(comp => {
+  MyButton = comp
+})
 const Item = List.Item;
+
+const BuggyComponent = ({text}) => (
+<div>{text}</div>
+)
 
 class Index extends Component {
   constructor(props) {
@@ -31,6 +44,7 @@ class Index extends Component {
       newList: [`<h1>1<h1/>`, 2, 3],
       text: 'myButton',
       name: 4,
+      count: 0,
       ...store.getState()
     };
     // console.log(store.getState());
@@ -39,6 +53,8 @@ class Index extends Component {
   }
   componentDidMount() {
     console.log(this.props);
+    console.log('wechatConfig')
+    console.log(wechatConfig)
     Home.getHomeData({}).then(res => {
       console.log(res.data);
     });
@@ -56,6 +72,10 @@ class Index extends Component {
   componentWillUnmount() {
     console.log('child - componentWillUnmount');
   }
+
+  // componentDidCatch(){
+  //   console.log('catch')
+  // }
 
   storeChange() {
     this.setState(store.getState());
@@ -107,9 +127,30 @@ class Index extends Component {
     store.dispatch(action);
   }
 
-  render() {
+  report=()=>{
+    // try {
+    //   throw new Error("1");
+    // } catch (error) {
+    //   console.log('手动抛出异常')
+    // }
+    let newCount = this.state.count + 1
+        this.setState({
+            count: newCount
+        },()=>{
+            if (this.state.count === 5){
+                throw new Error('i crashed！！！')
+            }
+        })
+    
+  }
+  
+
+
+  render() { 
+    console.log('props')
+    console.log(this.props)
     return (
-      <Fragment>
+      <>
         <ul>
           {this.state.newList.map((item, index) => {
             return (
@@ -135,7 +176,11 @@ class Index extends Component {
         <Button type="primary" onClick={this.clickBtn}>
           增加
         </Button>
-        <MyButton text={this.state.text} onChange={this.changeName}></MyButton>
+        <Button type="primary" onClick={this.report}>
+          sentry
+        </Button>
+        <div>{wechatConfig[5].name}</div>
+        {MyButton&&<MyButton text={this.state.text} onChange={this.changeName}></MyButton>}
         <List renderHeader={() => 'Basic Style'} className="my-list">
           {this.state.list.map((item, index) => {
             return (
@@ -150,7 +195,14 @@ class Index extends Component {
             );
           })}
         </List>
-      </Fragment>
+        
+        {[1,2].map((_, i) =><BuggyComponent text={this.state.text}  /> )}
+        <div className='scroll'>
+          啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+        </div>
+        <video src="https://hy.v.netease.com/2018/1030/5c9caed3eea6c6e079673d031fca3350qt.mp4" controls="controls"  webkit-playsinline="true" x5-video-player-type="h5"></video>
+        <div className='red'></div>
+      </>
     );
   }
 }

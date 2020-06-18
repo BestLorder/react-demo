@@ -17,16 +17,29 @@
 
 // export default My;
 import React, { useState,useEffect } from 'react';
+import '@/assets/js/fastclick';
 function My(){
     const [ count , setCount ] = useState(10);
     useEffect(()=>{
         
-        console.log(`useEffect=>You clicked ${count} times`)
+        console.log(`useEffect=>You clickedtimes`)
 
         return ()=>{
-            console.log('====================')
+            console.log('1111')
+
+        }
+    },[])
+
+    useEffect(()=>{
+        
+        console.log(`useEffect=>You ${count} clickedtimes`)
+
+        return ()=>{
+            console.log('2')
+
         }
     },[count])
+    
     return (
         <div>
             <p>You clicked {count} times</p>
