@@ -8,7 +8,7 @@ import {
   addItemAction
 } from '@/store/actionCreators';
 import './list.css'
-import '@/assets/js/fastclick';
+// import '@/assets/js/fastclick';
 import '@/assets/js/a';
 import wechatConfig from '@/config/wechatConfig'
 let MyButton = null

@@ -3,12 +3,12 @@
  * @Author: Lorder
  * @Date: 2019-12-24 18:27:20
  * @LastEditors: Lorder
- * @LastEditTime: 2020-06-12 10:17:40
+ * @LastEditTime: 2020-06-23 10:27:12
  */ 
 
 
 import React, { useState, useEffect } from 'react';
-import '@/assets/js/fastclick';
+// import '@/assets/js/fastclick';
 const Test = () => {
   const [a] = useState('1234');
   // a

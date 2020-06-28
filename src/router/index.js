@@ -3,7 +3,7 @@
  * @Author: Lorder
  * @Date: 2019-12-04 16:41:26
  * @LastEditors: Lorder
- * @LastEditTime: 2020-06-11 20:38:29
+ * @LastEditTime: 2020-06-24 15:38:44
  */
 // import React from 'react'
 // import Loadable from 'react-loadable';
@@ -22,6 +22,7 @@ const Index = loadable(() => import(/* webpackChunkName: "Index" */'@/pages/Inde
 const List = loadable(() => import(/* webpackChunkName: "List" */'@/pages/List'))
 const My = loadable(() => import(/* webpackChunkName: "My" */'@/pages/My'))
 const Test = loadable(() => import(/* webpackChunkName: "Test" */'@/pages/Test'))
+const Poster = loadable(() => import(/* webpackChunkName: "Poster" */'@/pages/Poster'))
 
 
 
@@ -65,6 +66,16 @@ const router = [
     //   loading: Loading,
     // })
     component:Test
+  },
+  {
+    path: '/poster',
+    title: 'test',
+    exact: true,
+    // component: Loadable({
+    //   loader: () => import(/* webpackChunkName: "Test" */'../pages/Test'),
+    //   loading: Loading,
+    // })
+    component:Poster
   }
 ];
 

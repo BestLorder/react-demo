@@ -49,6 +49,8 @@ const lessModuleRegex = /\.module\.less$/;
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
+  console.log('webpackEnv:')
+  console.log(webpackEnv)
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
 
@@ -261,7 +263,7 @@ module.exports = function(webpackEnv) {
         chunks: 'async',
         minSize: 30000,
         minChunks: 1,
-        maxAsyncRequests: 2,
+        maxAsyncRequests: 3,
         maxInitialRequests: 1,
         automaticNameDelimiter: '~',
         name: true,

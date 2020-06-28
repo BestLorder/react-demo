@@ -17,7 +17,7 @@
 
 // export default My;
 import React, { useState,useEffect } from 'react';
-import '@/assets/js/fastclick';
+// import '@/assets/js/fastclick';
 function My(){
     const [ count , setCount ] = useState(10);
     useEffect(()=>{

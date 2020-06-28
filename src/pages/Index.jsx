@@ -3,7 +3,7 @@
  * @Author: Lorder
  * @Date: 2019-12-04 16:23:48
  * @LastEditors: Lorder
- * @LastEditTime: 2020-06-18 13:23:07
+ * @LastEditTime: 2020-06-24 11:35:20
  */
 import React, { Component } from 'react';
 // import MyButton from '@/components/Button';
@@ -14,7 +14,7 @@ import './index.less'
 import store from '@/store';
 import wechatConfig from '@/config/wechatConfig'
 import '@/assets/js/a';
-import '@/assets/js/fastclick';
+// import '@/assets/js/fastclick';
 // import { ADD_ITEM , DELETE_ITEM } from '@/store/actionTypes'
 import {
   changeInputAction,
@@ -22,15 +22,19 @@ import {
   deleteItemAction
 } from '@/store/actionCreators';
 import { connect } from 'react-redux'; //引入连接器
+// import './jsmpeg.min.js'
+// import jsmpeg from 'jsmpeg'
+{/* <script type="text/javascript" src="./jsmpeg.min.js"></script> */}
+
 let MyButton = null
 import(/* webpackChunkName: "MyButton" */'@/components/Button').then(comp => {
   MyButton = comp
 })
 const Item = List.Item;
 
-const BuggyComponent = ({text}) => (
-<div>{text}</div>
-)
+// const BuggyComponent = ({text}) => (
+// <div>{text}</div>
+// )
 
 class Index extends Component {
   constructor(props) {
@@ -58,7 +62,31 @@ class Index extends Component {
     Home.getHomeData({}).then(res => {
       console.log(res.data);
     });
-
+    // var jsmpeg = require('jsmpeg');
+    // console.log(jsmpeg)
+    var canvas = document.getElementById('video-canvas');
+    // var url = 'https://qnunion.feierlaiedu.com/kcschool/202006231645266_out.ts';
+    var url = 'ws://'+document.location.hostname+':8082/';
+    var player = new JSMpeg.Player(url, {canvas: canvas,autoplay: true, });
+    // var player =new jsmpeg('https://qnunion.feierlaiedu.com/kcschool/202006231645266_out.ts', {
+    //   canvas: canvas, 
+    //   autoplay: true, 
+    //   onPlay: function() {
+		// 		//开始播放事件回调
+		// 		console.log('play')
+		// 	},
+    // });
+    console.log('player')
+    console.log(player)
+    // player.pause();
+player.play();
+// player.stop();
+    // player.play();
+    // var player = new JSMpeg.Player('https://hy.v.netease.com/2018/1030/5c9caed3eea6c6e079673d031fca3350qt.mp4',[{
+    //   canvas: document.getElementById('video-canvas'),
+		// 	autoplay:true,//是否自动播放
+		// 	loop:false,
+    // }]);
     // getConfigure().then((res)=>{
     //   console.log(res.data)
     // })
@@ -196,13 +224,15 @@ class Index extends Component {
           })}
         </List>
         
-        {[1,2].map((_, i) =><BuggyComponent text={this.state.text}  /> )}
+        {/* {[1,2].map((_, i) =><BuggyComponent text={this.state.text}  /> )} */}
         <div className='scroll'>
           啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
         </div>
-        <video src="https://hy.v.netease.com/2018/1030/5c9caed3eea6c6e079673d031fca3350qt.mp4" controls="controls"  webkit-playsinline="true" x5-video-player-type="h5"></video>
+        <video src="https://hy.v.netease.com/2018/1030/5c9caed3eea6c6e079673d031fca3350qt.mp4" controls="controls"  webkit-playsinline="true" x5-video-player-type="h5-page"></video>
         <div className='red'></div>
         <div>6666</div>
+        {/* <div className="jsmpeg" id='video-canvas' data-url="<url>"></div> */}
+        <canvas style={{width: '100%',height:'200px'}} width='375px' height='200px' id="video-canvas"></canvas>
       </>
     );
   }
