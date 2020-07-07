@@ -42,7 +42,7 @@ class Test extends Component {
       this.setState({ src: canvas.toDataURL() },()=>{
         dom.style.display='none'
         console.log(document.querySelectorAll('canvas'))
-        document.querySelectorAll('canvas')[1].style.display='none'
+        // document.querySelectorAll('canvas')[1].style.display='none'
       });
       // let oImg = new Image();
       // oImg.src = canvas.toDataURL(); // 导出图片
@@ -91,7 +91,7 @@ class Test extends Component {
           <canvas id="canvas" className={styles.qrcode}></canvas>
           <div>Hello world!</div>
         </div>
-        <img src={src} alt="" />
+        <img src={src} alt="" className={styles.list} />
       </>
     );
   }

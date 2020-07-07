@@ -2,15 +2,16 @@
  * @Descripttion:
  * @Author: Lorder
  * @Date: 2019-12-27 13:35:46
- * @LastEditors  : Lorder
- * @LastEditTime : 2019-12-27 15:43:34
+ * @LastEditors: Lorder
+ * @LastEditTime: 2020-07-03 17:09:08
  */
 import axios from 'axios';
 import md5 from 'js-md5';
 import { Base64 } from 'js-base64';
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API,
-  timeout: 10000
+  // baseURL: process.env.REACT_APP_API,
+  baseURL: 'http://192.168.14.202:3000/',
+  timeout: 20000
 });
 console.log(process.env.REACT_APP_API);
 // 添加请求拦截器
@@ -19,19 +20,19 @@ instance.interceptors.request.use(
     // 在发送请求之前做些什么
     config.headers.Accept = '*/*';
     config.headers['Content-Type'] = 'application/json;charset=UTF-8';
-    let timestamp = parseInt(+new Date() / 1000)
-    // let timestamp = 1577432088;
+    // let timestamp = parseInt(+new Date() / 1000)
+    // // let timestamp = 1577432088;
 
-    config.headers.timestamp = timestamp;
-    if (typeof config.data != 'undefined') {
-      for (let i in config.data) {
-        if (typeof config.data[i] == 'undefined') {
-          delete config.data[i];
-        }
-      }
-    }
-    config.headers.signature = sign(config.data, timestamp);
-    config.headers.token = '50bc7c60f7e568256e64daa76449007c';
+    // config.headers.timestamp = timestamp;
+    // if (typeof config.data != 'undefined') {
+    //   for (let i in config.data) {
+    //     if (typeof config.data[i] == 'undefined') {
+    //       delete config.data[i];
+    //     }
+    //   }
+    // }
+    // config.headers.signature = sign(config.data, timestamp);
+    // config.headers.token = '50bc7c60f7e568256e64daa76449007c';
     return config;
   },
   function(error) {

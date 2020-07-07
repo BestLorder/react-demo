@@ -3,33 +3,37 @@
  * @Author: Lorder
  * @Date: 2019-12-04 16:23:48
  * @LastEditors: Lorder
- * @LastEditTime: 2020-06-24 11:35:20
+ * @LastEditTime: 2020-07-03 17:06:13
  */
 import React, { Component } from 'react';
 // import MyButton from '@/components/Button';
 
 import { Button, List } from 'antd-mobile';
 import * as Home from '@/services/index';
-import './index.less'
+import './index.less';
 import store from '@/store';
-import wechatConfig from '@/config/wechatConfig'
+import wechatConfig from '@/config/wechatConfig';
 import '@/assets/js/a';
 // import '@/assets/js/fastclick';
 // import { ADD_ITEM , DELETE_ITEM } from '@/store/actionTypes'
 import {
   changeInputAction,
   addItemAction,
-  deleteItemAction
+  deleteItemAction,
 } from '@/store/actionCreators';
 import { connect } from 'react-redux'; //引入连接器
 // import './jsmpeg.min.js'
 // import jsmpeg from 'jsmpeg'
-{/* <script type="text/javascript" src="./jsmpeg.min.js"></script> */}
+{
+  /* <script type="text/javascript" src="./jsmpeg.min.js"></script> */
+}
 
-let MyButton = null
-import(/* webpackChunkName: "MyButton" */'@/components/Button').then(comp => {
-  MyButton = comp
-})
+let MyButton = null;
+import(/* webpackChunkName: "MyButton" */ '@/components/Button').then(
+  (comp) => {
+    MyButton = comp;
+  }
+);
 const Item = List.Item;
 
 // const BuggyComponent = ({text}) => (
@@ -49,7 +53,7 @@ class Index extends Component {
       text: 'myButton',
       name: 4,
       count: 0,
-      ...store.getState()
+      ...store.getState(),
     };
     // console.log(store.getState());
     this.storeChange = this.storeChange.bind(this); //转变this指向
@@ -57,35 +61,38 @@ class Index extends Component {
   }
   componentDidMount() {
     console.log(this.props);
-    console.log('wechatConfig')
-    console.log(wechatConfig)
-    Home.getHomeData({}).then(res => {
+    console.log('wechatConfig');
+    console.log(wechatConfig);
+    // Home.getHomeData({}).then((res) => {
+    //   console.log(res.data);
+    // });
+    Home.firstScn({a:1}).then((res) => {
       console.log(res.data);
     });
     // var jsmpeg = require('jsmpeg');
     // console.log(jsmpeg)
     var canvas = document.getElementById('video-canvas');
     // var url = 'https://qnunion.feierlaiedu.com/kcschool/202006231645266_out.ts';
-    var url = 'ws://'+document.location.hostname+':8082/';
-    var player = new JSMpeg.Player(url, {canvas: canvas,autoplay: true, });
+    var url = 'ws://' + document.location.hostname + ':8082/';
+    var player = new JSMpeg.Player(url, { canvas: canvas, autoplay: true });
     // var player =new jsmpeg('https://qnunion.feierlaiedu.com/kcschool/202006231645266_out.ts', {
-    //   canvas: canvas, 
-    //   autoplay: true, 
+    //   canvas: canvas,
+    //   autoplay: true,
     //   onPlay: function() {
-		// 		//开始播放事件回调
-		// 		console.log('play')
-		// 	},
+    // 		//开始播放事件回调
+    // 		console.log('play')
+    // 	},
     // });
-    console.log('player')
-    console.log(player)
+    console.log('player');
+    console.log(player);
     // player.pause();
-player.play();
-// player.stop();
+    player.play();
+    // player.stop();
     // player.play();
     // var player = new JSMpeg.Player('https://hy.v.netease.com/2018/1030/5c9caed3eea6c6e079673d031fca3350qt.mp4',[{
     //   canvas: document.getElementById('video-canvas'),
-		// 	autoplay:true,//是否自动播放
-		// 	loop:false,
+    // 	autoplay:true,//是否自动播放
+    // 	loop:false,
     // }]);
     // getConfigure().then((res)=>{
     //   console.log(res.data)
@@ -121,10 +128,10 @@ player.play();
     this.props.history.push('/my');
   };
 
-  changeName = text => {
+  changeName = (text) => {
     console.log('changeName');
     this.setState({
-      text
+      text,
     });
   };
   changeList = () => {
@@ -155,28 +162,28 @@ player.play();
     store.dispatch(action);
   }
 
-  report=()=>{
+  report = () => {
     // try {
     //   throw new Error("1");
     // } catch (error) {
     //   console.log('手动抛出异常')
     // }
-    let newCount = this.state.count + 1
-        this.setState({
-            count: newCount
-        },()=>{
-            if (this.state.count === 5){
-                throw new Error('i crashed！！！')
-            }
-        })
-    
-  }
-  
+    let newCount = this.state.count + 1;
+    this.setState(
+      {
+        count: newCount,
+      },
+      () => {
+        if (this.state.count === 5) {
+          throw new Error('i crashed！！！');
+        }
+      }
+    );
+  };
 
-
-  render() { 
-    console.log('props')
-    console.log(this.props)
+  render() {
+    console.log('props');
+    console.log(this.props);
     return (
       <>
         <ul>
@@ -207,8 +214,19 @@ player.play();
         <Button type="primary" onClick={this.report}>
           sentry
         </Button>
+        <div className="tip">
+          <span>
+            这是子元素的内容
+          </span>
+        </div>
+        <div className="tip">系统消息</div>
         <div>{wechatConfig[5].name}</div>
-        {MyButton&&<MyButton text={this.state.text} onChange={this.changeName}></MyButton>}
+        {MyButton && (
+          <MyButton
+            text={this.state.text}
+            onChange={this.changeName}
+          ></MyButton>
+        )}
         <List renderHeader={() => 'Basic Style'} className="my-list">
           {this.state.list.map((item, index) => {
             return (
@@ -223,23 +241,33 @@ player.play();
             );
           })}
         </List>
-        
+
         {/* {[1,2].map((_, i) =><BuggyComponent text={this.state.text}  /> )} */}
-        <div className='scroll'>
+        <div className="scroll">
           啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
         </div>
-        <video src="https://hy.v.netease.com/2018/1030/5c9caed3eea6c6e079673d031fca3350qt.mp4" controls="controls"  webkit-playsinline="true" x5-video-player-type="h5-page"></video>
-        <div className='red'></div>
+        <video
+          src="https://hy.v.netease.com/2018/1030/5c9caed3eea6c6e079673d031fca3350qt.mp4"
+          controls="controls"
+          webkit-playsinline="true"
+          x5-video-player-type="h5-page"
+        ></video>
+        <div className="red"></div>
         <div>6666</div>
         {/* <div className="jsmpeg" id='video-canvas' data-url="<url>"></div> */}
-        <canvas style={{width: '100%',height:'200px'}} width='375px' height='200px' id="video-canvas"></canvas>
+        <canvas
+          style={{ width: '100%', height: '200px' }}
+          width="375px"
+          height="200px"
+          id="video-canvas"
+        ></canvas>
       </>
     );
   }
 }
 
-export default connect(state => {
+export default connect((state) => {
   return {
-    inputValue: state.inputValue
+    inputValue: state.inputValue,
   };
 }, null)(Index);
