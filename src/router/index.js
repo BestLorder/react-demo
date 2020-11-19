@@ -1,5 +1,5 @@
 /*
- * @Descripttion: 
+ * @Descripttion:
  * @Author: Lorder
  * @Date: 2019-12-04 16:41:26
  * @LastEditors: Lorder
@@ -18,15 +18,13 @@ import loadable from '@loadable/component'
 // const List = React.lazy(() => import('@/pages/List'));
 // const My = React.lazy(() => import('@/pages/My'));
 
-const Index = loadable(() => import(/* webpackChunkName: "Index" */'@/pages/Index'))
-const List = loadable(() => import(/* webpackChunkName: "List" */'@/pages/List'))
-const My = loadable(() => import(/* webpackChunkName: "My" */'@/pages/My'))
-const MyHooks = loadable(() => import(/* webpackChunkName: "MyHooks" */'@/pages/MyHooks'))
+const Index = loadable(() => import(/* webpackChunkName: "Index" */ '@/pages/Index'))
+const List = loadable(() => import(/* webpackChunkName: "List" */ '@/pages/List'))
+const My = loadable(() => import(/* webpackChunkName: "My" */ '@/pages/My'))
+const MyHooks = loadable(() => import(/* webpackChunkName: "MyHooks" */ '@/pages/MyHooks'))
 
-const Test = loadable(() => import(/* webpackChunkName: "Test" */'@/pages/Test'))
-const Poster = loadable(() => import(/* webpackChunkName: "Poster" */'@/pages/Poster'))
-
-
+const Test = loadable(() => import(/* webpackChunkName: "Test" */ '@/pages/Test'))
+const Poster = loadable(() => import(/* webpackChunkName: "Poster" */ '@/pages/Poster'))
 
 const router = [
   {
@@ -50,7 +48,7 @@ const router = [
   },
   {
     path: '/my/',
-    name:'my',
+    name: 'my',
     title: '职场技能',
     exact: true,
     // component: Loadable({
@@ -61,7 +59,7 @@ const router = [
   },
   {
     path: '/my-hooks',
-    name:'my',
+    name: 'my',
     title: '职场技能',
     exact: true,
     // component: Loadable({
@@ -78,7 +76,7 @@ const router = [
     //   loader: () => import(/* webpackChunkName: "Test" */'../pages/Test'),
     //   loading: Loading,
     // })
-    component:Test
+    component: Test,
   },
   {
     path: '/poster',
@@ -88,8 +86,8 @@ const router = [
     //   loader: () => import(/* webpackChunkName: "Test" */'../pages/Test'),
     //   loading: Loading,
     // })
-    component:Poster
-  }
-];
+    component: Poster,
+  },
+]
 
-export default router;
+export default router

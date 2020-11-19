@@ -1,5 +1,8 @@
-.scroll{
-    width: 100px;
-    height: 100px;
-    overflow-y: scroll;
+.scroll {
+  width: 100px;
+  height: 100px;
+  overflow-y: scroll;
+}
+video {
+  width: 100%;
 }
