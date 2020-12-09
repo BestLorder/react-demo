@@ -20,11 +20,12 @@ import loadable from '@loadable/component'
 
 const Index = loadable(() => import(/* webpackChunkName: "Index" */ '@/pages/Index'))
 const List = loadable(() => import(/* webpackChunkName: "List" */ '@/pages/List'))
-const My = loadable(() => import(/* webpackChunkName: "My" */ '@/pages/My'))
+const My = loadable(() => import(/* webpackChunkName: "My" */ '@/pages/My1'))
 const MyHooks = loadable(() => import(/* webpackChunkName: "MyHooks" */ '@/pages/MyHooks'))
 
 const Test = loadable(() => import(/* webpackChunkName: "Test" */ '@/pages/Test'))
 const Poster = loadable(() => import(/* webpackChunkName: "Poster" */ '@/pages/Poster'))
+const Study = loadable(() => import(/* webpackChunkName: "Study" */ '@/pages/Study'))
 
 const router = [
   {
@@ -34,7 +35,7 @@ const router = [
     // component: Loadable({
     //   loader: () => import(/* webpackChunkName: "index" */'@/pages/Index'),
     // })
-    component: Index,
+    component: My,
   },
   {
     path: '/list',
@@ -87,6 +88,16 @@ const router = [
     //   loading: Loading,
     // })
     component: Poster,
+  },
+  {
+    path: '/study',
+    title: 'study',
+    exact: true,
+    // component: Loadable({
+    //   loader: () => import(/* webpackChunkName: "Test" */'../pages/Test'),
+    //   loading: Loading,
+    // })
+    component: Study,
   },
 ]
 

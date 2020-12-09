@@ -133,6 +133,13 @@ class Index extends Component {
   jumpLIst = () => {
     // this.props.history.push('/list/666');
     this.props.history.push('/list?list=666')
+    // this.props.history.push({
+    //   pathname: '/list',
+    //   query: {
+    //     a: 1,
+    //     b: 2,
+    //   },
+    // })
   }
   jumpMy = () => {
     // this.props.history.push('/my');
