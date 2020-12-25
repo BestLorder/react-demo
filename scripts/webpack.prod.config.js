@@ -19,7 +19,7 @@ const webpackConfigProd = {
   },
 
   output: {
-    filename: 'change-button.js',
+    filename: 'index.js',
     path: resolve('../lib'),
     libraryTarget: 'umd',
   },
