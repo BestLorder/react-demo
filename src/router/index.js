@@ -35,7 +35,7 @@ const router = [
     // component: Loadable({
     //   loader: () => import(/* webpackChunkName: "index" */'@/pages/Index'),
     // })
-    component: My,
+    component: Index,
   },
   {
     path: '/list',

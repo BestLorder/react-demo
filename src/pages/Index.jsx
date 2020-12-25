@@ -6,7 +6,6 @@
  * @LastEditTime: 2020-07-03 17:06:13
  */
 import React, { Component, Suspense } from 'react'
-// import MyButton from '@/components/Button';
 
 import { Button, List } from 'antd-mobile'
 import * as Home from '@/services/index'
@@ -18,6 +17,9 @@ import '@/assets/js/a'
 // import { ADD_ITEM , DELETE_ITEM } from '@/store/actionTypes'
 import { changeInputAction, addItemAction, deleteItemAction } from '@/store/actionCreators'
 import { connect } from 'react-redux' //引入连接器
+
+import ChangeButton from '../packages/change_button.jsx'
+// import ChangeButton from '../components/Button'
 // import './jsmpeg.min.js'
 // import jsmpeg from 'jsmpeg'
 
@@ -100,14 +102,14 @@ class Index extends Component {
     //   ],
     // )
 
-    //必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效
-    // document.addEventListener(
-    //   'WeixinJSBridgeReady',
-    //   function() {
-    //     document.getElementById('video').play()
-    //   },
-    //   false,
-    // )
+    // 必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效
+    document.addEventListener(
+      'WeixinJSBridgeReady',
+      function() {
+        document.getElementById('video').play()
+      },
+      false,
+    )
   }
   componentWillUpdate() {
     console.log('componentWillUpdate---组件更新前，shouldComponentUpdate函数之后执行')
@@ -211,6 +213,7 @@ class Index extends Component {
     const { myButtonShow } = this.state
     return (
       <>
+        <ChangeButton />
         <ul>
           {this.state.newList.map((item, index) => {
             return <li key={index + item} dangerouslySetInnerHTML={{ __html: item }}></li>
@@ -234,13 +237,14 @@ class Index extends Component {
         <Button type="primary" onClick={this.report}>
           sentry
         </Button>
+
         {/* {myButtonShow && (
           <Suspense fallback={<div></div>}>
             <MyButton text={this.state.text} onChange={this.changeName} />
           </Suspense>
         )} */}
 
-        {myButtonShow && <MyButton1 text={1} onChange={this.changeName} />}
+        {/* {myButtonShow && <MyButton1 text={1234} onChange={this.changeName} />} */}
         {/* {MyButton && (
           <MyButton
             text={this.state.text}
@@ -267,11 +271,6 @@ class Index extends Component {
             )
           })}
         </List>
-
-        {/* {[1,2].map((_, i) =><BuggyComponent text={this.state.text}  /> )} */}
-        <div className="scroll">
-          啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-        </div>
         <video
           src="https://hy.v.netease.com/2018/1030/5c9caed3eea6c6e079673d031fca3350qt.mp4"
           controls="controls"
