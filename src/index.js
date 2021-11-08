@@ -18,7 +18,7 @@ import '@/assets/js/fastclick'
 
 const query = getUrlParam()
 
-if (process.env.REACT_APP_ENV === 'dev' && query.debug) {
+if (process.env.REACT_APP_ENV === 'dev') {
   // import VConsole from 'vconsole'
   // var VConsole = require('vconsole')
   import(/* webpackChunkName: "vconsole" */ 'vconsole').then(m => {

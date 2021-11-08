@@ -26,6 +26,7 @@ const MyHooks = loadable(() => import(/* webpackChunkName: "MyHooks" */ '@/pages
 const Test = loadable(() => import(/* webpackChunkName: "Test" */ '@/pages/Test'))
 const Poster = loadable(() => import(/* webpackChunkName: "Poster" */ '@/pages/Poster'))
 const Study = loadable(() => import(/* webpackChunkName: "Study" */ '@/pages/Study'))
+const VideoBox = loadable(() => import(/* webpackChunkName: "VideoBox" */ '@/pages/VideoBox'))
 
 const router = [
   {
@@ -98,6 +99,16 @@ const router = [
     //   loading: Loading,
     // })
     component: Study,
+  },
+  {
+    path: '/videoBox',
+    title: 'videoBox',
+    exact: true,
+    // component: Loadable({
+    //   loader: () => import(/* webpackChunkName: "Test" */'../pages/Test'),
+    //   loading: Loading,
+    // })
+    component: VideoBox,
   },
 ]
 

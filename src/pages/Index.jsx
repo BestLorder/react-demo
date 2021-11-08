@@ -17,8 +17,8 @@ import '@/assets/js/a'
 // import { ADD_ITEM , DELETE_ITEM } from '@/store/actionTypes'
 import { changeInputAction, addItemAction, deleteItemAction } from '@/store/actionCreators'
 import { connect } from 'react-redux' //引入连接器
-
-import ChangeButton from '../packages/change_button.jsx'
+// import { ChangeButton, ChangeButton1, ChangeButton2, ChangeButton3 } from '@lorder/react-ui'
+// import ChangeButton from '../packages/change_button.jsx'
 // import ChangeButton from '../components/Button'
 // import './jsmpeg.min.js'
 // import jsmpeg from 'jsmpeg'
@@ -68,9 +68,13 @@ class Index extends Component {
     // Home.getHomeData({}).then((res) => {
     //   console.log(res.data);
     // });
-    Home.firstScn({ a: 1 }).then(res => {
-      console.log(res.data)
+    // Home.firstScn({ a: 1 }).then(res => {
+    //   console.log(res.data)
+    // })
+    Home.getUser({ a: 1 }).then(res => {
+      console.log(res)
     })
+
     // var jsmpeg = require('jsmpeg')
     // console.log('jsmpeg')
     // console.log(jsmpeg)
@@ -132,17 +136,18 @@ class Index extends Component {
    * @param {type}
    * @return:
    */
-  jumpLIst = () => {
-    // this.props.history.push('/list/666');
-    this.props.history.push('/list?list=666')
-    // this.props.history.push({
-    //   pathname: '/list',
-    //   query: {
-    //     a: 1,
-    //     b: 2,
-    //   },
-    // })
-  }
+  // jumpLIst = () => {
+  //   // this.props.history.push('/list/666');
+  //   // this.props.history.push('/list?list=666')
+  //   this.props.history.push({
+  //     pathname: '/list',
+  //     query: {
+  //       a: 1,
+  //       b: 2,
+  //     },
+  //   })
+  // }
+
   jumpMy = () => {
     // this.props.history.push('/my');
     // import(/* webpackChunkName: "MyButton" */ "@/components/Button").then(
@@ -213,15 +218,15 @@ class Index extends Component {
     const { myButtonShow } = this.state
     return (
       <>
-        <ChangeButton />
+        {/* <ChangeButton /> */}
         <ul>
           {this.state.newList.map((item, index) => {
             return <li key={index + item} dangerouslySetInnerHTML={{ __html: item }}></li>
           })}
         </ul>
-        <Button type="primary" onClick={this.jumpLIst}>
+        {/* <Button type="primary" onClick={this.jumpLIst}>
           Jump LIst
-        </Button>
+        </Button> */}
         <Button type="primary" onClick={this.jumpMy}>
           Jump My
         </Button>
@@ -276,10 +281,7 @@ class Index extends Component {
           controls="controls"
           webkit-playsinline="true"
           x5-video-player-type="h5-page"
-          autoplay
           id="video"
-          loop
-          muted
           playsInline={true}
         ></video>
         <div className="red"></div>

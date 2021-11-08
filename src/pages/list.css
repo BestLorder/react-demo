@@ -6,3 +6,6 @@
 video {
   width: 100%;
 }
+video::-webkit-media-controls-timeline {
+  display: none;
+}

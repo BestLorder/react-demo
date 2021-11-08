@@ -34,11 +34,11 @@ export default function Counter() {
     // setCount(count + 1);
     setInterval(() => {
       console.log(count)
-      setCount(++count)
+      // setCount(++count)
       // console.log(num);
       // setCount(++num);
     }, 1000)
-  }, [count])
+  }, [])
   console.log('我是 count', count)
 
   return <h1>{count}</h1>

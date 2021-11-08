@@ -21,7 +21,7 @@ const webpackConfigProd = {
   output: {
     filename: 'index.js',
     path: resolve('../lib'),
-    libraryTarget: 'umd',
+    libraryTarget: 'commonjs2',
   },
 
   devtool: 'source-map', //或使用'cheap-module-source-map'、'none'
@@ -41,20 +41,20 @@ const webpackConfigProd = {
       new OptimizeCSSAssetsPlugin(),
     ],
   },
-  // externals: {
-  //   react: {
-  //     commonjs: 'react',
-  //     commonjs2: 'react',
-  //     amd: 'react',
-  //     root: 'React',
-  //   },
-  //   'react-dom': {
-  //     commonjs: 'react-dom',
-  //     commonjs2: 'react-dom',
-  //     amd: 'react-dom',
-  //     root: 'ReactDOM',
-  //   },
-  // },
+  externals: {
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react',
+      root: 'React',
+    },
+    'react-dom': {
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      amd: 'react-dom',
+      root: 'ReactDOM',
+    },
+  },
   //   externals: [nodeExternals()],
 
   //   plugins: [
